@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.plcoding.stockmarketapp.presentation.company_listing.shimmerEffect
 import com.ramcosta.composedestinations.annotation.Destination
 
 
@@ -77,6 +78,7 @@ fun CompanyInfoScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(text = "Market Summary")
                     Spacer(modifier = Modifier.height(32.dp))
+                    Spacer(modifier = Modifier.height(32.dp))
                     StockChart(
                         infos = state.stockInfos,
                         modifier = Modifier
@@ -93,7 +95,67 @@ fun CompanyInfoScreen(
         contentAlignment = Center
     ) {
         if (state.isLoading) {
-            CircularProgressIndicator()
+            //CircularProgressIndicator()
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.DarkGray)
+                    .padding(16.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .width(80.dp)
+                        .height(18.dp)
+                        .shimmerEffect()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Box(
+                    modifier = Modifier
+                        .width(48.dp)
+                        .height(14.dp)
+                        .shimmerEffect()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Divider(modifier = Modifier.fillMaxWidth())
+                Spacer(modifier = Modifier.height(8.dp))
+                Box(
+                    modifier = Modifier
+                        .width(320.dp)
+                        .height(14.dp)
+                        .shimmerEffect()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Box(
+                    modifier = Modifier
+                        .width(64.dp)
+                        .height(14.dp)
+                        .shimmerEffect()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Divider(modifier = Modifier.fillMaxWidth())
+                Spacer(modifier = Modifier.height(8.dp))
+                Box(
+                    modifier = Modifier
+                        .width(320.dp)
+                        .height(40.dp)
+                        .shimmerEffect()
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .shimmerEffect()
+                )
+                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(32.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(250.dp)
+                        .align(CenterHorizontally)
+                        .shimmerEffect()
+                )
+            }
         } else if (state.error != null) {
             Text(
                 text = state.error,
