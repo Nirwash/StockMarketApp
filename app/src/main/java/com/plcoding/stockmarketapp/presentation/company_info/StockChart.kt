@@ -4,12 +4,12 @@ import android.graphics.Paint
 import androidx.compose.foundation.Canvas
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.plcoding.stockmarketapp.domain.model.IntradayInfo
 import kotlin.math.round
 import kotlin.math.roundToInt
@@ -53,7 +53,7 @@ fun StockChart(
             }
         }
         val priceStep = (upperValue - lowerValue) / 5f
-        (0..5).forEach { i ->
+        (0..4).forEach { i ->
             drawContext.canvas.nativeCanvas.apply {
                 drawText(
                     round(lowerValue + priceStep * i).toString(),
@@ -75,7 +75,9 @@ fun StockChart(
                 val y1 = height - spacing - (leftRatio * height).toFloat()
                 val x2 = spacing + (i + 1) * spacePerHour
                 val y2 = height - spacing - (rightRatio * height).toFloat()
-                if (i == 0) { moveTo(x1, y1) }
+                if (i == 0) {
+                    moveTo(x1, y1)
+                }
                 lastX = (x1 + x2) / 2f
                 quadraticBezierTo(
                     x1, y1, lastX, (y1 + y2) / 2f
